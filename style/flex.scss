@@ -1,0 +1,45 @@
+@mixin flex($jc, $ai) {
+    display: flex;
+    @if ($jc == '') {}
+    @if ($ai == '') {}
+
+    @if ($jc == center) {
+        justify-content: center;
+    }
+
+    @if ($jc == left) {
+        justify-content: flex-start;
+    }
+
+    @if ($jc == right) {
+        justify-content: flex-end;
+    }
+
+    @if ($jc == between) {
+        justify-content: space-between;
+    }
+
+    @if ($jc == around) {
+        justify-content: space-around;
+    }
+
+    @if ($ai == center) {
+        align-items: center;
+    }
+
+    @if ($ai == top) {
+        align-items: flex-start;
+    }
+
+    @if ($ai == bottom) {
+        align-items: flex-end;
+    }
+
+    @if ($ai == between) {
+        align-items: space-between;
+    }
+
+    @if ($ai == around) {
+        align-items: space-around;
+    }
+}

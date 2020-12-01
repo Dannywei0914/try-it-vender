@@ -1,0 +1,603 @@
+@import './flex.scss';
+
+body {
+    height: 1920px;
+    min-width: 1080px;
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+    font-family: 'Microsoft JhengHei';
+    touch-action: none;
+}
+
+.home {
+    width: 50px;
+    height: 50px;
+    @include flex(center, center);
+    background-color: #275e92;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+
+    i {
+        background-image: url('/images/home.svg');
+        background-size: cover;
+        padding: 15px;
+    }
+}
+
+.header {
+    width: 100%;
+    @include flex(center, '');
+    flex-wrap: nowrap;
+
+    &__video {
+        width: 661px;
+        height: 376px;
+        background-color: #000;
+        outline: none;
+        pointer-events: none;
+    }
+}
+
+.nav {
+    background-color: #275e92;
+    height: 80px;
+    text-align: center;
+
+    &__font {
+        padding: 9px 0;
+        font-size: 60px;
+        color: #fff;
+    }
+
+    &-time {
+        margin: 20px 60px;
+        padding: 15px;
+        @include flex(between,center);
+        border-bottom: 1px solid #838383;
+
+        &__date {
+            @include flex('',center);
+            p {
+                font-size: 50px;
+                padding: 0 10px;
+            }
+        }
+
+        &__temp {
+            @include flex('',center);
+            p {
+                font-size: 50px;
+            }
+        }
+    }
+}
+
+.body {
+    height: calc(100% - 580px);
+
+    &-flex {
+        padding: 0 50px;
+        @include flex(center,'');
+    }
+
+    &-list {
+        @include flex('','');
+        max-height: 1189px;
+        width: 980px;
+
+        .os-content {
+            @include flex('','');
+            flex-wrap: wrap;
+        }
+
+        &__item {
+            background-color: #fff;
+            border-radius: 5px;
+            width: calc(25% - 120px);
+            padding: 5px 40px;
+            margin: 15px 20px;
+            box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
+
+            &:active {
+                box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            &-box {
+                @include flex('', center);
+                flex-flow: column;
+            }
+
+            img {
+                width: 125px;
+                height: 140px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid #000;
+            }
+
+            img:nth-child(2) {
+                display: none;
+                border-bottom: 0;
+                width: 70%;
+            }
+
+            &_sold {
+                position: relative;
+                pointer-events: none;
+
+                img:nth-child(2) {
+                    display: block;
+                    position: absolute;
+                    z-index: 5;
+                }
+            }
+
+            &-font {
+                font-size: 15px;
+                width: 170px;
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            &-button {
+                width: calc(100% - 20px);
+                @include flex(center, '');
+                background-color:  #275e92;
+                border-radius: 5px;
+                padding: 5px;
+
+                p {
+                    font-size: 18px;
+                    color: #fff;
+                }
+
+                input {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .footer {
+        width: 1080px;
+        @include flex(around,'');
+        padding: 10px 0;
+        position: absolute;
+        bottom: 0;
+
+        &__button {
+            background-color: #636363;
+            color:white;
+            width: calc(25% - 20px);
+            height: 120px;
+            text-align: center;
+            border: 0;
+            font-size: 45px;
+            border-radius: 5px;
+            outline: none;
+            margin: 0 10px;
+
+            &:active {
+                background-color: #000;
+            }
+        }
+    }
+
+    .top-button {
+        position: absolute;
+        bottom: 150px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #000;
+        background-color: #838383;
+        cursor: pointer;
+        display: none;
+
+        svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        &_show {
+            display: block;
+        }
+    }
+}
+
+.popup {
+    display: none;
+    background-color: rgba(0, 0, 0, .7);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    padding: 0 100px;
+    box-sizing: border-box;
+
+    &_show {
+        @include flex(center,center);
+    }
+
+    &-commodity, &-payment {
+        border-radius: 5px;
+        padding: 22px 50px;
+        background-color: #fff;
+        min-width: 780px;
+        height: 1240px;
+    }
+
+    .commodity-data {
+        @include flex(center,top);
+        padding: 50px 0;
+
+        img {
+            width: 368px;
+            height: 367px;
+            border-radius: 5px;
+            box-shadow: 4px 4px 5px 6px  rgba(0, 0, 0, 0.2);
+        }
+
+        &__box {
+            padding: 0 30px;
+            @include flex('','');
+            flex-flow: column;
+
+            &-txt {
+                color: #636363;
+                font-size: 18px;
+            }
+
+            textarea {
+                border: 0;
+                padding: 0 18px;
+                margin: 30px 0;
+                color: #636363;
+                font-size: 15px;
+                resize: none;
+                outline: none;
+            }
+
+            &-price {
+                @include flex('',center);
+
+                p {
+                    font-size: 25px;
+                    color: #636363;
+
+                    &:nth-child(2) {
+                        text-align: center;
+                        width: 120px;
+                        padding: 0 30px;
+                        font-weight: bold;
+                        font-size: 50px;
+                    }
+                }
+            }
+        }
+    }
+
+    .commodity-pay {
+        @include flex(center, center);
+        flex-flow: column;
+
+        &__title {
+            width: 100%;
+            font-size: 30px;
+            color: #636363;
+            border-bottom: 1px solid #939393;
+            padding: 20px 0;
+        }
+
+        &__list {
+            padding: 20px 0px;
+            @include flex(left,center);
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        &__item {
+            margin: 10px 10px;
+            box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            position: relative;
+
+            &-mask {
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                background-color: rgba(0, 0, 0, 0.7);
+                position: absolute;
+                top: 0;
+                @include flex(center,center);
+
+                p {
+                    font-size: 30px;
+                    color: #fff;
+                    font-weight: bold;
+                }
+            }
+
+            &_noClick {
+                pointer-events: none;
+            }
+
+            &:active {
+                box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            img {
+                width: 232px;
+                height: 233px;
+            }
+        }
+
+        &__button {
+            background-color:#C24434;
+            color:white;
+            width: 300px;
+            height: 60px;
+            text-align: center;
+            border: 0;
+            font-size: 30px;
+            border-radius: 5px;
+            outline: none;
+
+            &:active {
+                background-color:#a74133;
+            }
+        }
+    }
+
+    .payment-logo {
+        @include flex(center, center);
+        margin: 100px 0;
+
+        img {
+            border: 1px solid #838383;
+            border-radius: 5px;
+            width: 235px;
+            height: 234px;
+        }
+    }
+
+    .payment-show {
+        @include flex(center, center);
+        flex-flow: column;
+
+        &__title {
+            width: 100%;
+            font-size: 30px;
+            color: #636363;
+            border-bottom: 1px solid #939393;
+            padding: 20px 0;
+        }
+
+        &-box {
+            width: 100%;
+            @include flex(between, center);
+            padding: 0 10px;
+            box-sizing: border-box;
+            margin: 50px 0;
+
+            &__list {
+                height: 479px;
+                @include flex(between, '');
+                flex-flow: column;
+                
+                &-item {
+                    @include flex('', center);
+                    padding: 20px 0;
+
+                    span, p {
+                        font-size: 18px;
+                        color: #636363;
+                    }
+
+                    p {
+                        width: 155px;
+                        padding: 0 20px;
+                        text-align: center;
+                        word-break: break-all;
+                        font-weight: bold;
+                        font-size: 50px;
+                    }
+
+                    &-txt {
+                        font-size: 40px !important;
+                        color: #C24434 !important;
+                    }
+                }
+            }
+
+            img {
+                width: 369px;
+                height: 479px;
+            }
+        }
+
+        &-button {
+            width: 100%;
+            @include flex(between,'');
+
+            &__pay {
+                &-click {
+                    background-color: #5764A0;
+                    color: white;
+                    width: 300px;
+                    height: 60px;
+                    text-align: center;
+                    border: 0;
+                    border-radius: 5px;
+                    font-size: 30px;
+                    outline: none;
+
+                    &_none{
+                        pointer-events: none;
+                        background-color: #636363;
+                    }
+
+                    &:active {
+                        background-color: #515c8d;
+                    }
+                }
+                
+                &-time {
+                    @include flex(center, center);
+                    height: 60px;
+
+                    p {
+                        font-size: 35px;
+                        color: #838383;
+                        padding: 20px 3px;
+                    }
+                }
+
+                &_top {
+                    padding-top: 60px;
+                }
+            }
+
+            &__cancel {
+                padding-top: 60px;
+
+                button {
+                    background-color:#C24434;
+                    color:white;
+                    width: 300px;
+                    height: 60px;
+                    text-align: center;
+                    border: 0;
+                    border-radius: 5px;
+                    font-size: 30px;
+                    outline: none;
+
+                    &:active {
+                        background-color:#a74133;
+                    }
+                }
+            }
+        }
+    }
+
+    &__finish {
+        width: 880px;
+        height: 1280px;
+        background-image: url('../images/pic-0018.jpg');
+        position: relative;
+        @include flex('', center);
+        flex-flow: column;
+
+        &-txt {
+            @include flex('', center);
+            position: absolute;
+            top: 1100px;
+
+            p {
+                font-size: 25px;
+                color: #838383;
+                text-align: center;
+                padding: 0 10px;
+
+                &:nth-child(2) {
+                    width: 50px;
+                }
+            }
+        }
+
+        &-button {
+            width: 300px;
+            height: 60px;
+            text-align: center;
+            color: #275e92;
+            background-color: white;
+            border: 0;
+            outline: none;
+            border-radius: 5px;
+            font-size: 20px;
+            position: absolute;
+            top: 1150px;
+
+            &:active {
+                background-color: rgb(177, 177, 177);
+            }
+        }
+    }
+
+    &_ad {
+        padding: 0;
+        background-color: #275e92;
+
+        svg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 110px;
+            z-index: 10;
+
+            path {
+                stroke-width: 5px;
+            }
+        }
+    }
+
+    &__photo {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        display: none;
+
+        &_show {
+            z-index: 5;
+            display: block;
+        }
+
+        &-img {
+            display: block;
+            width: 100%;
+            height: 35%;
+        }
+
+        &-video {
+            display: block;
+            width: 100%;
+            outline: none;
+            pointer-events: none;
+            height: 30%;
+            background-color: #000;
+        }
+    }
+
+    &__message {
+        text-align: center;
+        padding: 100px 80px;
+        background-color: #fff;
+        border-radius: 5px;
+
+        p {
+            font-size: 30px;
+            color: #636363;
+        }
+    }
+}
+
+#linepay{
+    border:0 none;
+    width:150px;
+    text-align:center;
+    text-indent:-99em;
+    pointer-events: none;
+}
+
+#linepay:focus, input:focus{
+    outline: none;
+}

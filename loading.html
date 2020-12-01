@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/loading.css">
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/modern-business.js"></script>
+    <script src="./js/OverlayScrollbars.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 修飾 'view_line' 'view_twpay'-->
+    <div class="view view_line">
+        <div class="view__content">
+            <!-- 依不同圖片去更換src -->
+            <img src="./images/pic-0044.png" alt="">
+            <p>請款中請稍候</p>
+            <div class="loading">
+                <i class="loading__inner loading__inner_big"></i>
+                <i class="loading__inner"></i>
+                <i class="loading__inner"></i>
+                <i class="loading__inner"></i>
+                <i class="loading__inner"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        var inner = $('.loading__inner');
+        console.log($(inner[1]))
+        var i = 0;
+        $(document).ready(function(){
+            setInterval(() => {
+                i ++;
+
+                if (i > 4) {
+                    i = 0;
+                };
+
+                inner.removeClass('loading__inner_big');
+                $(inner[i]).addClass('loading__inner_big');
+            }, 500);
+        })
+    </script>
+</body>
+</html>
